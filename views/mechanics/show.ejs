@@ -1,0 +1,133 @@
+<% include ../partials/header %>
+<section class="section">
+
+    <div class="mechanic-header">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="container">
+                    <div class="row" style="margin-top:70px; margin-bottom: 20px">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-3" style="margin: 20px 20px">
+                            <center><img src="<%= mechanic.image %>" width="230px"></center>
+                        </div>
+                        <div class="container">
+                        <div class="col-md-5">
+                            
+                            <div class="row">
+                                <h2><%= mechanic.name %></h2>
+                            </div>
+                            <div class="row">
+                                <h4><%= mechanic.loc %></h4>
+                            </div>
+                            <div class="row">
+                                <p><%= mechanic.bio %></p>
+                            </div>
+                            
+                            <% total_rating = 0 %>
+                            <% mechanic.reviews.forEach(function(review){ %>
+                            <% total_rating += Number(review.rating) %>
+                            <% }) %>
+                            <% num_reviews = mechanic.reviews.length %>
+                            <% avg_rating = Number(total_rating / num_reviews) %>
+                            
+                            <div class="row">
+                                <h4>
+                                    <% if(avg_rating < 0.5) { %>
+                                    <img src="../img/stars/0:5.png">
+                                    <% } else if (avg_rating < 1.5) { %>
+                                    <img src="../img/stars/1:5.png">
+                                    <% } else if (avg_rating < 2.5) { %>
+                                    <img src="../img/stars/2:5.png">
+                                    <% } else if (avg_rating < 3.5) { %>
+                                    <img src="../img/stars/3:5.png">
+                                    <% } else if (avg_rating < 4.5) { %>
+                                    <img src="../img/stars/4:5.png">
+                                    <% } else if (num_reviews === 0) { %>
+                                    <% } else { %>
+                                    <img src="../img/stars/5:5.png">
+                                    <% } %>
+                                </h4>
+                                
+                                <a class="btn btn-success" href="/mechanics/<%= mechanic._id %>/reviews/new">Skriv Anmeldelse</a>
+                                <% if(currentUser && mechanic.author.id.equals(currentUser._id)) { %>
+                                <a class="btn btn-warning" href="/mechanics/<%= mechanic._id %>/edit">Rediger</a>
+                                <% } %>
+                                
+                            </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" style="overflow-x: hidden;">
+        <div class="row">
+            
+            
+            <div class="container">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="row" style="margin-top:10px">
+                    <h3>Kunde anmeldelser (<%= num_reviews %>)</h3>
+                    <div class="well well-lg">
+                        <div class="container">
+                            
+                            <% if(num_reviews === 0) { %>
+                                Bli den første å skrive en anmeldelse!
+                                    <% } else { %>
+                            <% mechanic.reviews.reverse().forEach(function(review){ %>
+                            
+                            <div class="row">
+                            <div class="col-md-2">
+                                <div class="row">
+                                    <h4><%= review.author.firstname %></h4>
+                                </div>
+                                <div class="row">
+                                    <% if(review.rating == "0") { %>
+                                    <img src="../img/stars/0-5.png">
+                                    <% } else if (review.rating == "1") { %>
+                                    <img src="../img/stars/1-5.png">
+                                    <% } else if (review.rating == "2") { %>
+                                    <img src="../img/stars/2-5.png">
+                                    <% } else if (review.rating == "3") { %>
+                                    <img src="../img/stars/3-5.png">
+                                    <% } else if (review.rating == "4") { %>
+                                    <img src="../img/stars/4-5.png">
+                                    <% } else if (review.rating == "5") { %>
+                                    <img src="../img/stars/5-5.png">
+                                    <% } else { %>
+                                    <img src="../img/stars/5-5.png">
+                                    <% } %>
+                                </div>
+                                <p></p>
+                            </div>
+                            
+                            <div class="col-md-5">
+                                <p style="text-align: left;">
+                                    
+                                    <%= review.text %>
+
+                                </p>
+                            </div>
+
+                            </div>
+                            <% }) %>
+                            <% } %>
+  
+                        </div>
+                    </div>
+            
+                
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<% include ../partials/footer %>

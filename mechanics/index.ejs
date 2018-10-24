@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<section class="section">
+    <div class="mechanic-index-header">
+        <div class="header-content">
+            
+                <div class="container">
+                    <h1>Våre mekanikere</h1>
+                    <p>Her er noen av våre beste mekanikere</p>
+                </div>
+            
+        </div>
+    </div>
+    <div class="container">
+    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+        <% mechanics.forEach(function(mechanic){ %>
+        <div class="col-sm-6 col-md-4" style="margin-top: 20px">
+    <div class="thumbnail" style="height:100%; width: 300px; margin: 10px 10px;">
+        <img src="<%= mechanic.image %>" class="img-circle" alt="<%= mechanic.name %>" width="150" height="150">
+        <div class="caption">
+        <h4><%= mechanic.name %></h4>
+        <h5><strong><img src="http://i.imgur.com/VhbO2Uz.png"><%= mechanic.loc %></strong></h5>
+        <p><%= mechanic.bio %></p>
+        <p><a href="/mechanics/<%= mechanic._id %>" class="btn btn-default btn-block" role="button">SE MEKANIKER PROFIL</a></p>
+      </div>
+    </div>
+  </div>
+            <% }); %>
+    </div>
+</div>
+</section>
+
+<% include ../partials/footer %>

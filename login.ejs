@@ -1,0 +1,42 @@
+<% include partials/header %>
+
+<section class="section">
+    <div class="container">
+    <div class="row"></div>
+
+<h1 style="text-align: center">Logg inn</h1>
+<div style="width: 300px; margin: 0 auto;">
+    
+    <form action="/login" method="POST">
+        
+        <!--
+        <fieldset class="form-group">
+        <a class="btn btn-lg btn-block btn-social btn-facebook">
+              <span class="fa fa-facebook"></span> <center>Logg inn med Facebook</center>
+        </a>
+        </fieldset>
+        
+        <center><h4>eller</h4></center> -->
+        
+        <fieldset class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="Epostadresse">
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Passord">
+        </fieldset>
+        <button class="btn btn-lg btn-success btn-block">LOGG INN</button>
+    </form>
+    <div class="row">
+        <center style="margin-top: 10px">Har du ikke en brukerkonto? <a href="/register">Registrer deg her</a></center>
+    </div>
+
+</div>
+</div>
+    
+        </div>
+        </div>
+    </div>
+    </section>
+    
+<% include partials/footer %>

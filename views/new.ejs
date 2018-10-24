@@ -1,0 +1,176 @@
+<% include partials/header %>
+
+<section class="section">
+
+    <div class="order-header">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Bestill Service</h1>
+                <div class="container">
+                <center><div id="undertext"><h3>Våre mekanikere vil være på døren din, akkurat når du ønsker.</h3></div></center>
+                </div>
+            </div>
+            </div>
+            </div>
+            
+            <div>
+
+</div>
+
+            <p></p>
+            <p style="font-size: 30px;">Total pris: <b id='boldStuff'>0,-</b> </p>
+                <div style="color: #000" class="container">
+                    <div class="col-sm-4">
+                        <form action="/new" method="POST" novalidate>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Velg Service</label>
+                                <ul class="list-group">
+                                    
+                                    
+                                    <ul class="list-group checked-list-box">
+                  <li class="list-group-item" id="vask" onclick=chooseService("vask") type="text" value="vask" name="service">
+                      Innvendig vask
+                      
+                      <ul>
+                                                <li>Støvsuging av hele bilen</li>
+                                                <li>Rengjøring av dashboard</li>
+                                                <li>Vindusvask</li>
+                                                <li>Vask av matter</li>
+                                            </ul>
+                      
+                      </li>
+                  <li class="list-group-item" id="dekk" onclick=chooseService("dekk") type="text" value="dekk" name="service">
+                      Dekkskifte
+                      
+                      
+                      <ul>
+                                                <li>Vi skifter alle slags dekk</li>
+                                            </ul>
+                      </li>
+                  <li class="list-group-item" id="olje" onclick=chooseService("olje") type="text" value="olje" name="service">
+                      Oljeskift
+                      
+                      <ul>
+                                                <li>Riktig, høykvalitets olje</li>
+                                                <li>Høy kvalitet oljefilter bytte</li>
+                                                <li>Væskenivåkontroll</li>
+                                            </ul>
+                      
+                      </li>
+                </ul>
+                                    
+                                    
+                                </ul>
+
+								<input type="hidden" id="type" name="service" value="service" />
+								<input  type="hidden" id="price" name="price" value="price" />
+                                
+                            </div>
+    
+</div>
+
+<div class="col-sm-4">
+    <label for="exampleInputEmail1">Velg dato og tidspunkt</label>
+    <div id="datepicker-container">
+  <div id="datepicker-center">
+    <div class="form-group" id="datepicker" data-date:"today">
+        <input class="form-control" type="hidden" id="user_date" name="date"/>
+        <div id="messages" style="white-space:pre;"></div>
+    </div>
+    </div>
+
+</div>
+
+        <div class="form-group">
+        <select class="form-control" onchange="time_checker()" id="time-select" name="time" required>
+            <option id="velg" disabled selected hidden value="">Velg tidspunkt</option>
+            <option value="8:00">8:00</option>
+            <option value="10:00">10:00</option>
+            <option value="12:00">12:00</option>
+            <option value="14:00">14:00</option>
+            <option value="16:00">16:00</option>
+        </select>
+    </div>
+    
+    <div class="container">
+        
+        <% var arr = [] %>
+        <% orders.forEach(function(order){ %>
+        <% if (true) { %>
+        <% arr.push(order.date + order.time) %>
+        <% } %>
+        <% }); %>
+        <input classs="form-group" type="hidden" id="list_of_dates" value=<%= arr %>>
+        
+    </div>
+    
+    
+    
+</div>
+<div class="col-sm-4">
+     <!-- < name="num" value=orders.length > -->
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1">Fullt navn</label>
+        <input class="form-control" type="text" name="name" placeholder="Ola Normann" required/>
+    </fieldset>
+    <!--
+    <div class="form-group">
+        <input class="form-control" type="text" name="date" placeholder="date">
+    </div>
+    -->
+    
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1">Registreringsnummer</label>
+        <input class="form-control" type="text" name="reg" placeholder="BR53633" required/>
+    </fieldset>
+    
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1">Epost</label>
+        <input class="form-control" type="email" name="email" id="exampleInputEmail1" placeholder="ola@gmail.com" />
+        <small class="text-muted">Vi vil aldri dele din epost med noen andre.</small>
+    </fieldset>
+    
+    <fieldset class="form-group">
+        <label for="exampleInputEmail1">Mobil</label>
+        <input class="form-control" type="text" name="tel" placeholder="986 15 901" required/>
+    </fieldset>
+    
+    <fieldset class="form-group">
+        <label for="formGroupExampleInput">Adresse</label>
+        <input class="form-control" type="text" name="address" placeholder="Waldemar Thranes gate 5" required/>
+    </fieldset>
+    
+    <fieldset class="form-group">
+        <label for="formGroupExampleInput">Postnummer</label>
+        <input class="form-control" type="text" name="postal" placeholder="0172" required/>
+    </fieldset>
+    
+    <fieldset class="form-group">
+        <label for="formGroupExampleInput">Fylke</label>
+        <select class="form-control" id="exampleSelect1" name="region" required>
+            <option disabled selected hidden value="">Velg fylke</option>
+            <option>Oslo</option>
+            <option>Akershus</option>
+            <option>Østfold</option>
+        </select>
+    </fieldset>
+    
+    <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="subscribe"> Ja, jeg vil motta gode tilbud på epost fra Mobil Service
+                </label>
+            </div>
+    
+    <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block" name="num" value=<%= 10000 + orders.length + 1 %>>Send Bestilling</button>
+    </div>
+
+    
+</form>
+</div>
+</div>
+    </section>
+
+    
+<% include partials/footer %>

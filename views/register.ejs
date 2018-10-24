@@ -1,0 +1,49 @@
+<% include partials/header %>
+
+<section class="section">
+    <div class="container">
+    <div class="row"></div>
+
+<h1 style="text-align: center">Registrer deg</h1>
+<div style="width: 300px; margin: 0 auto;">
+    
+    <form action"/register" method="POST">
+        
+        <!--
+        <fieldset class="form-group">
+        <a class="btn btn-lg btn-block btn-social btn-facebook">
+              <span class="fa fa-facebook"></span> <center>Registrer med Facebook</center>
+        </a>
+        </fieldset>
+        
+        <center><h4>eller</h4></center> -->
+        
+        <fieldset class="form-group">
+            <input class="form-control" style="width:148px; display: inline" type="text" name="firstname" placeholder="Fornavn">
+            <input class="form-control" style="width:148px; display: inline" type="text" name="lastname" placeholder="Etternavn">
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <input class="form-control" type="email" name="username" placeholder="E-postadresse">
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <input class="form-control" type="tel" name="tel" placeholder="Mobilnummer">
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <input class="form-control" type="password" name="password" placeholder="Velg passord">
+        </fieldset>
+        
+        <button class="btn btn-lg btn-success btn-block">Registrer</button>
+    </form>
+
+</div>
+</div>
+    
+        </div>
+        </div>
+    </div>
+    </section>
+    
+<% include partials/footer %>

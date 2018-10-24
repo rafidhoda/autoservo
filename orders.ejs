@@ -1,0 +1,82 @@
+<% include partials/header %>
+
+<div style="max-width: 700px" class="container">
+
+<h1>Bestillinger</h1>
+
+<a class="btn btn-primary btn-large" href="/new">Ny Bestilling</a>
+<a class="btn btn-primary btn-large" href="/logout">Logout</a>
+<p></p>
+
+    <% orders.reverse().forEach(function(order){ %>
+    <center>
+    <div style="width: 650px" class="row">
+            <div class="panel panel-default">
+  <!-- Default panel contents -->
+    <div class="panel-heading"><b>Ordrenummer: <%= order.num %></b>
+        <tr>
+         <%= order.timestamp %>
+        </tr>
+            <table class="table table-sm">
+    <tbody>
+    <tr>
+      <th>Navn</th>
+      <td><%= order.name %></td>
+      <th>Dato</th>
+      <td><%= order.date %></td>
+        <th>Epost</th>
+      <td><%= order.email %></td>
+    </tr>
+    <tr>
+      <th>Service</th>
+      <td><%= order.service %></td>
+      <th>Tid</th>
+      <td><%= order.time %></td>
+        <th>Mobil</th>
+      <td><%= order.tel %></td>
+    </tr>
+        <tr>
+      <th>Ekstra</th>
+      <td><%= order.extra %></td>
+      <th>Reg</th>
+      <td><%= order.reg %></td>
+        <th>Subscribe</th>
+      <td><%= order.subscribe %></td>
+    </tr>
+        <tr>
+      <th>Adresse</th>
+      <td><%= order.address %></td>
+      <th>Post</th>
+      <td><%= order.postal %></td>
+        <th>Fylke</th>
+      <td><%= order.region %></td>
+    </tr>
+    <tr>
+      <th>Pris</th>
+      <td><%= order.price %></td>
+      <th></th>
+      <td></td>
+        <th></th>
+      <td>
+        <!--
+        <a href="/orders/<%= order._id %>/edit" class="btn btn-xs btn-primary">Rediger</a>
+        <form style="display: inline" action="/orders/<%= order._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-xs btn-danger">Slett</button>
+        </form>
+        -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+            
+            
+  </div>
+    <br>
+    </div></center>
+    <% }); %>
+    
+    
+</div>
+
+<% include partials/footer %>

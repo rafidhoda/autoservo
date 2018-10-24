@@ -1,0 +1,53 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center">Rediger ordre</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/orders/<%= order._id %>/?_method=PUT" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[name]" value="<%= order.name %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[reg]" value="<%= order.reg %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[service]" value="<%= order.service %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[extra]" value="<%= order.extra %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[price]" value="<%= order.price %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[time]" value="<%= order.time %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[date]" value="<%= order.date %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[email]" value="<%= order.email %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[tel]" value="<%= order.tel %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[address]" value="<%= order.address %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[postal]" value="<%= order.postal %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[region]" value="<%= order.region %>">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="order[subscribe]" value="<%= order.subscribe %>">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Oppdater</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

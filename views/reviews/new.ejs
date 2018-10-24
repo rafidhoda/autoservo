@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+<section class="section">
+<div class="container">
+    <div class="row">
+        <h1 style="text-align: center;">Skriv anmeldelse</h1>
+        <div style="width: 300px; margin: 0 auto;">
+        <form action="/mechanics/<%= mechanic._id %>/reviews" method="POST" onsubmit="return validateForm()">
+            
+            <div class="form-group">
+                <h4 style="font-weight: 700; display: inline-block">Rating:
+            <div class='starrr' id='star2'></div>
+            <input class="form-control" type='hidden' name="review[rating]" value='' id='star2_input'/></h4>
+            </div>
+            
+            <div class="form-group">
+                <textarea class="form-control" id="review" name="review[text]" placeholder="Skriv anmeldelsen din her" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Registrer Vurdering</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+</section>
+
+<script>
+    
+function validateForm() {
+    var value = document.getElementById('review').value;
+    var rating = document.getElementById('star2_input').value;
+    if(rating == ''){
+        alert("Vennligst velg en rating");
+        return false;
+    } else if (value.length < 10){
+        alert("Vennligst skriv en anmeldelse bestående av mer enn 10 tegn");
+        return false;
+    } else {
+        return true;
+    }
+}
+    
+</script>
+
+<% include ../partials/footer %>
